@@ -1,0 +1,18 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no logic implemented.",
+  "feature_evidence.json": "Contains feature reports mapping implemented features to related source files and components.",
+  "frontend-file-summaries.txt": "Lists high-level summaries for all major frontend YouTube-related components and utilities.",
+  "frontend/index.css": "Tailwind CSS setup defining light/dark theme variables and base styles.",
+  "frontend/index.html": "HTML entry point mounting the React app via main.tsx.",
+  "frontend/src/App.tsx": "Main React UI for inputting a YouTube URL/ID, validating it, and displaying the embedded player with controls.",
+  "frontend/src/features/youtube/parseYouTubeVideoId.ts": "Parses and validates YouTube URLs or raw IDs to extract a valid video ID.",
+  "frontend/src/features/youtube/PlaybackControls.tsx": "UI component providing playback, seek, volume, and speed controls for the YouTube player.",
+  "frontend/src/features/youtube/useYouTubeIFramePlayer.ts": "React hook managing the YouTube IFrame API player instance and exposing playback control functions and state.",
+  "frontend/src/features/youtube/YouTubeEmbed.tsx": "Embeds the YouTube iframe player and connects it to custom playback controls via the player hook.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor based on user identity, refetching when identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides a React context and provider for managing Internet Identity authentication, including loading, login, logout, and status tracking.",
+  "frontend/src/index.css": "Defines global Tailwind CSS layers and custom OKLCH color variables for light and dark themes.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping it with React Query and the InternetIdentityProvider.",
+  "frontend/tailwind.config.js": "Configures Tailwind CSS theme extensions, color bindings to CSS variables, plugins, and dark mode behavior.",
+  "project_state.json": "Holds metadata about project state, features, requirements, and planning notes for the YouTube embed app."
+}

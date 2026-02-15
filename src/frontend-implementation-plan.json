@@ -1,0 +1,94 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "YouTube Embed Player with Custom Playback Controls (Frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Single-page UI to accept a YouTube URL/video ID, validate/parse to videoId, and embed the requested video with clear error handling.",
+      "acceptanceCriteria": [
+        "The page includes an input for a YouTube URL/video ID and a primary action to load the video.",
+        "The app correctly extracts the videoId from common URL formats (e.g., youtu.be/<id>, youtube.com/watch?v=<id>, youtube.com/embed/<id>) and also accepts a raw 11-char videoId.",
+        "When the input is invalid/unparseable, the UI shows a clear English error message and does not attempt to load a player.",
+        "When valid, the embedded player becomes visible and loads the requested video."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Implement the single-page layout: URL/ID input, Load action, error messaging, and a container that conditionally renders the YouTube player when a valid videoId is present. Use shadcn-ui components (e.g., Input/Button/Card) to compose the form and layout. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/youtube/parseYouTubeVideoId.ts",
+          "operation": "create",
+          "description": "Add a focused parsing/validation utility to extract a YouTube videoId from common URL formats and accept raw 11-char IDs; return structured results usable by the UI for error display."
+        },
+        {
+          "path": "frontend/src/features/youtube/YouTubeEmbed.tsx",
+          "operation": "create",
+          "description": "Create an embeddable player wrapper that renders the video region only when a valid videoId is provided, and supports rendering the YouTube iframe/player instance needed for custom controls."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Custom playback controls for the embedded YouTube player: play/pause, seek ±10s, mute/unmute, volume slider, and playback speed selector with state reflection.",
+      "acceptanceCriteria": [
+        "Play and Pause buttons control playback of the embedded video.",
+        "Seek -10s and +10s adjust the current time accordingly (clamped to video duration bounds).",
+        "Mute/Unmute toggles the player’s mute state.",
+        "A volume slider adjusts volume from 0–100.",
+        "A playback speed selector changes speed (e.g., 0.5x, 1x, 1.5x, 2x).",
+        "Controls reflect current state where feasible (e.g., mute state, current speed)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/youtube/useYouTubeIFramePlayer.ts",
+          "operation": "create",
+          "description": "Implement a React hook to load/initialize the YouTube IFrame API, create/manage the player instance, and expose imperative control functions (play, pause, seek, mute, setVolume, setPlaybackRate) plus observable state (mute state, volume, playback rate, duration/current time where feasible)."
+        },
+        {
+          "path": "frontend/src/features/youtube/PlaybackControls.tsx",
+          "operation": "create",
+          "description": "Build the custom control panel UI using shadcn-ui components (e.g., Button, Slider, Select) to trigger player actions and display current state (mute, speed, volume). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/youtube/YouTubeEmbed.tsx",
+          "operation": "modify",
+          "description": "Wire the player wrapper to use the YouTube IFrame API hook so that it can provide a stable player instance and state to the custom controls, including clamped seeking based on duration."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate PlaybackControls with the embedded player so controls operate on the currently loaded video and are disabled/hidden when no valid player is loaded. Use shadcn-ui layout primitives (e.g., Card/Separator if available) to keep a cohesive controls section. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Apply a minimal, coherent visual theme and responsive layout across the app without adding extra features.",
+      "acceptanceCriteria": [
+        "The UI uses a consistent theme (e.g., dark charcoal background with warm red/orange accent, clean typography, and a centered player layout).",
+        "All user-facing text is in English.",
+        "The layout is responsive and remains usable on mobile and desktop (player scales within viewport; controls wrap/stack appropriately)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global Tailwind layers and define theme CSS variables (dark charcoal surfaces, warm red/orange accent, readable foregrounds) consistent with the existing Tailwind CSS variable-driven color system."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions only as needed to support the chosen accent/background/typography conventions (prefer CSS variables already referenced by the config), keeping the theme minimal and consistent."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure consistent app layout and responsiveness: centered container, responsive player sizing, control wrapping/stacking for small screens, and enforcing dark theme (e.g., applying the dark class at the app root or document element). All visible copy remains English."
+        }
+      ]
+    }
+  ]
+}

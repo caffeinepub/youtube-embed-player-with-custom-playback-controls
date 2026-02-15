@@ -1,0 +1,66 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-ui-that-lets-the-user-paste-a-youtube-url-or-video-id-validates-parses-it-into-a-videoid-and-embeds-the-video-in-the-page",
+      "featureTitle": "Create a single-page UI that lets the user paste a YouTube URL (or video ID), validates/parses it into a videoId, and embeds the video in the page.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/youtube/YouTubeEmbed.tsx",
+        "frontend/src/features/youtube/parseYouTubeVideoId.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-custom-playback-controls-that-control-the-embedded-youtube-player-play-pause-seek-10s-seek-10s-mute-unmute-volume-slider-playback-speed-selector",
+      "featureTitle": "Implement custom playback controls that control the embedded YouTube player (Play, Pause, Seek -10s, Seek +10s, Mute/Unmute, Volume slider, Playback speed selector).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/youtube/PlaybackControls.tsx",
+        "frontend/src/features/youtube/YouTubeEmbed.tsx",
+        "frontend/src/features/youtube/useYouTubeIFramePlayer.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-minimal-coherent-visual-theme-for-the-app-and-apply-it-consistently-layout-colors-typography-components-without-introducing-additional-product-features",
+      "featureTitle": "Add a minimal, coherent visual theme for the app and apply it consistently (layout, colors, typography, components), without introducing additional product features.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

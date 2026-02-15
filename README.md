@@ -1,2 +1,3 @@
-# youtube-embed-player-with-custom-playback-controls
-Exported from Caffeine project: YouTube Embed Player with Custom Playback Controls
+## YouTube Embed Player with Custom Playback Controls
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

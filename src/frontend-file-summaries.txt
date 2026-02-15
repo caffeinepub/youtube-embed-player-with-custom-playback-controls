@@ -1,0 +1,8 @@
+{
+  "frontend/src/App.tsx": "Main application component that provides a YouTube URL input form, displays validation errors, and renders the YouTube embed player with custom controls when a valid video ID is loaded.",
+  "frontend/src/features/youtube/parseYouTubeVideoId.ts": "Utility function that parses YouTube URLs (youtube.com/watch, youtu.be, youtube.com/embed) and raw video IDs, returning structured validation results with error messages.",
+  "frontend/src/features/youtube/useYouTubeIFramePlayer.ts": "React hook that loads the YouTube IFrame API, manages player instance lifecycle, exposes playback control functions (play, pause, seek, mute, volume, speed), and tracks player state.",
+  "frontend/src/features/youtube/PlaybackControls.tsx": "Custom playback controls UI component with play/pause buttons, seek ±10s buttons, progress bar, volume slider with mute toggle, and playback speed selector.",
+  "frontend/src/features/youtube/YouTubeEmbed.tsx": "YouTube player wrapper component that renders the video iframe in a responsive 16:9 container and integrates the custom playback controls with the player hook.",
+  "frontend/src/index.css": "Global styles with OKLCH color system customized for dark theme with warm red/orange primary accent (oklch(0.65 0.22 25)) for buttons and interactive elements."
+}

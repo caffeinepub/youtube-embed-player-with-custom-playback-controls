@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Plan an app focused on a single YouTube-related feature (embedding YouTube videos with custom playback controls).",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-ui-that-lets-the-user-paste-a-youtube-url-or-video-id-validates-parses-it-into-a-videoid-and-embeds-the-video-in-the-page",
+      "title": "Create a single-page UI that lets the user paste a YouTube URL (or video ID), validates/parses it into a videoId, and embeds the video in the page.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-custom-playback-controls-that-control-the-embedded-youtube-player-play-pause-seek-10s-seek-10s-mute-unmute-volume-slider-playback-speed-selector",
+      "title": "Implement custom playback controls that control the embedded YouTube player (Play, Pause, Seek -10s, Seek +10s, Mute/Unmute, Volume slider, Playback speed selector).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-minimal-coherent-visual-theme-for-the-app-and-apply-it-consistently-layout-colors-typography-components-without-introducing-additional-product-features",
+      "title": "Add a minimal, coherent visual theme for the app and apply it consistently (layout, colors, typography, components), without introducing additional product features.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a simple app focused on a YouTube feature: embed YouTube videos and provide custom playback control buttons.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "YouTube Embed Player with Custom Playback Controls",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

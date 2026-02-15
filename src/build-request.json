@@ -1,0 +1,83 @@
+{
+  "kind": "build_request",
+  "title": "YouTube Embed Player with Custom Playback Controls",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page UI that lets the user paste a YouTube URL (or video ID), validates/parses it into a videoId, and embeds the video in the page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-6"
+        ],
+        "quotes": [
+          "Youtube feature",
+          "build a simple app focused on a YouTube feature: embed YouTube videos"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The page includes an input for a YouTube URL/video ID and a primary action to load the video.",
+        "The app correctly extracts the videoId from common URL formats (e.g., youtu.be/<id>, youtube.com/watch?v=<id>, youtube.com/embed/<id>) and also accepts a raw 11-char videoId.",
+        "When the input is invalid/unparseable, the UI shows a clear English error message and does not attempt to load a player.",
+        "When valid, the embedded player becomes visible and loads the requested video."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement custom playback controls that control the embedded YouTube player (Play, Pause, Seek -10s, Seek +10s, Mute/Unmute, Volume slider, Playback speed selector).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "lets you control playback with custom buttons"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Play and Pause buttons control playback of the embedded video.",
+        "Seek -10s and +10s adjust the current time accordingly (clamped to video duration bounds).",
+        "Mute/Unmute toggles the player’s mute state.",
+        "A volume slider adjusts volume from 0–100.",
+        "A playback speed selector changes speed (e.g., 0.5x, 1x, 1.5x, 2x).",
+        "Controls reflect current state where feasible (e.g., mute state, current speed)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a minimal, coherent visual theme for the app and apply it consistently (layout, colors, typography, components), without introducing additional product features.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-6"
+        ],
+        "quotes": [
+          "Youtube feature",
+          "embed YouTube videos and provide custom playback control buttons."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI uses a consistent theme (e.g., dark charcoal background with warm red/orange accent, clean typography, and a centered player layout).",
+        "All user-facing text is in English.",
+        "The layout is responsive and remains usable on mobile and desktop (player scales within viewport; controls wrap/stack appropriately)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend must be implemented with React + TypeScript, Tailwind CSS, and the existing UI component approach (compose read-only UI components; do not modify immutable paths).",
+    "Do not add external backend services or databases; keep functionality client-side unless explicitly required.",
+    "Do not edit files under frontend immutablePaths (e.g., frontend/src/main.tsx, frontend/src/hooks/*, frontend/src/components/ui)."
+  ],
+  "nonGoals": [
+    "User accounts/authentication (Internet Identity).",
+    "Playlists, subscriptions, comments, or any YouTube Data API integration.",
+    "Persisting watch history or favorites in the backend."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

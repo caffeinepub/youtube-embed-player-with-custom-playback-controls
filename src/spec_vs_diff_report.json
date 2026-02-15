@@ -1,0 +1,77 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T03:39:16.778Z",
+  "summary": "Implements the core single-page YouTube URL/videoId input + parsing + embed flow, and adds a custom-controls UI backed by a YouTube IFrame API hook with a dark theme. However, some control functionality is either explicitly left unwired (progress/seek bar) or cannot be confirmed due to truncation, and several unrequested/auth-related/backend pieces were added (including changes under paths called out as immutable in the BuildRequest constraints).",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Custom controls should include seeking via the progress bar (or otherwise wire the displayed progress control to player seeking).",
+      "reason": "The progress Slider’s onValueChange contains a comment indicating it is not wired to seekTo, so user-driven scrubbing via the progress bar is not implemented.",
+      "evidence": [
+        "frontend/src/features/youtube/PlaybackControls.tsx"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Playback speed selector changes speed (e.g., 0.5x, 1x, 1.5x, 2x) and reflects current speed where feasible.",
+      "reason": "A speed selector is implied by imports/props (Select + onPlaybackRateChange), but the relevant JSX/options wiring is truncated, so the required behavior cannot be verified from the provided diff summary.",
+      "evidence": [
+        "frontend/src/features/youtube/PlaybackControls.tsx (truncated)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication context/provider and actor creation hooks (authentication/client-side identity management).",
+      "reason": "BuildRequest explicitly lists user accounts/authentication (Internet Identity) as a non-goal, yet auth and actor hooks are included and main.tsx wraps the app in an InternetIdentityProvider.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts (truncated)",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "Backend canister/actor stub added (backend/main.mo).",
+      "reason": "BuildRequest requests a client-side-only feature and does not require backend changes/services; an empty backend actor was added anyway.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Footer promotion/link to caffeine.ai.",
+      "reason": "Not requested in requirements (REQ-1/2/3) and is an additional product/UI feature beyond the minimal YouTube player + theme scope.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "description": "Edits/additions under paths called out as immutable in constraints (hooks and main.tsx).",
+      "reason": "Constraints state \"Do not edit files under frontend immutablePaths (e.g., frontend/src/main.tsx, frontend/src/hooks/*, frontend/src/components/ui)\" but new files/content appear under frontend/src/hooks/* and frontend/src/main.tsx is included in the diff set.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/features/youtube/PlaybackControls.tsx",
+    "frontend/src/features/youtube/YouTubeEmbed.tsx",
+    "frontend/src/features/youtube/parseYouTubeVideoId.ts",
+    "frontend/src/features/youtube/useYouTubeIFramePlayer.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
